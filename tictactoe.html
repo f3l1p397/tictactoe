@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TICTACTOE</title>
+  <link rel="stylesheet" href="jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  .draggable { width: 100px; height: 100px; padding: 0.5em; float: left;}
+  td{width: 100px; height: 100px; padding: 0.5em; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="jquery-ui.js"></script>
+  <script>
+    $( function() {
+      $( "#draggable1" ).draggable();
+      $( "#draggable2" ).draggable();
+      $( "#draggable3" ).draggable();
+      $( "#draggable4" ).draggable();
+      $( "#draggable5" ).draggable();
+      $( "#draggable6" ).draggable();
+      $( "#draggable7" ).draggable();
+      $( "#draggable8" ).draggable();
+      $( "#draggable9" ).draggable();
+      $("#draggable10" ).draggable();
+    } );
+  </script>
+</head>
+<body>
+<div align="center">
+  <img src="tic.jpg">
+</div>
+<div>
+  <table align="center" border="2">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>        
+</div> 
+<div id="draggable1" class="ui-widget-content draggable">
+  <img src="X.jpg">
+</div>
+
+<div id="draggable2" class="ui-widget-content draggable">
+  <img src="X.jpg">
+</div>
+
+<div id="draggable3" class="ui-widget-content draggable">
+  <img src="X.jpg">
+</div>
+
+<div id="draggable4" class="ui-widget-content draggable">
+  <img src="X.jpg">
+</div>
+
+<div id="draggable5" class="ui-widget-content draggable">
+  <img src="X.jpg">
+</div>
+<div id="draggable6" class="ui-widget-content draggable">
+  <img src="O.jpg">
+</div>
+<div id="draggable7" class="ui-widget-content draggable">
+    <img src="O.jpg">
+</div>
+<div id="draggable8" class="ui-widget-content draggable">
+  <img src="O.jpg">
+</div>
+<div id="draggable9" class="ui-widget-content draggable">
+  <img src="O.jpg">
+</div>
+<div id="draggable10" class="ui-widget-content draggable">
+  <img src="O.jpg">
+</div>
+</body>
+</html>
