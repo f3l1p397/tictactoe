@@ -4,86 +4,161 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TICTACTOE</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <style>
-  .draggable { width: 100px; height: 100px; padding: 0.5em; float: left;}
-  td{width: 100px; height: 100px; padding: 0.5em; }
+  .draggable { width: 102px; height: 102px; float: left;}
+  td{width: 100px; height: 100px; padding: 1em; }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="jquery-ui.js"></script>
-  <script>
-    $( function() {
-      $( "#draggable1" ).draggable();
-      $( "#draggable2" ).draggable();
-      $( "#draggable3" ).draggable();
-      $( "#draggable4" ).draggable();
-      $( "#draggable5" ).draggable();
-      $( "#draggable6" ).draggable();
-      $( "#draggable7" ).draggable();
-      $( "#draggable8" ).draggable();
-      $( "#draggable9" ).draggable();
-      $("#draggable10" ).draggable();
-    } );
-  </script>
+  
+  <script>  
+    //con esto vamos a controlar si gana o no gana
+    var lista = ['n','n','n','n','n','n','n','n','n']
+    //funciones y comparaciones  
+    $(function(){
+      $("#draggable1").draggable({revert:"valid"})                //permite regresar la imagen a posicion inicial
+      $("#draggable2").draggable({revert:"valid"})                // lo mismo
+      $(".droppable").droppable({                                 //de aqui se pone las imagenes en droppables
+        drop:function(event,ui){
+          if(ui.draggable.attr("id")=="draggable1")
+          {
+            $(this).html("<img src='X.jpg'>")                     //pone la imagen
+            $(this).droppable("disable")                          //desactiva el droppable
+            $("#draggable1").draggable("disable")                 //desavilita draggable 1
+            $("#draggable2").draggable("enable")                  //habilita draggable 2
+
+            lista.splice(parseInt($(this).val())-1,1,'x')         //se reemplaza un elemento de la lista
+            
+            //validaciones para verificar tres en raya
+            if(lista[0]=='x' & lista[1]=='x' & lista[2]=='x'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[3]=='x' & lista[4]=='x' & lista[5]=='x'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[6]=='x' & lista[7]=='x' & lista[8]=='x'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[0]=='x' & lista[3]=='x' & lista[6]=='x'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[1]=='x' & lista[4]=='x' & lista[7]=='x'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[2]=='x' & lista[5]=='x' & lista[8]=='x'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[0]=='x' & lista[4]=='x' & lista[8]=='x'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[2]=='x' & lista[4]=='x' & lista[6]=='x'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+
+          }else{                                                        // lo mismo pero para la otra imagen
+            $(this).html("<img src='O.jpg'>")
+            $(this).droppable("disable")
+            $("#draggable2").draggable("disable")
+            $("#draggable1").draggable("enable")
+
+            lista.splice(parseInt($(this).val())-1,1,'o')
+            
+            if(lista[0]=='o' & lista[1]=='o' & lista[2]=='o'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[3]=='o' & lista[4]=='o' & lista[5]=='o'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[6]=='o' & lista[7]=='o' & lista[8]=='o'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[0]=='o' & lista[3]=='o' & lista[6]=='o'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[1]=='o' & lista[4]=='o' & lista[7]=='o'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[2]=='o' & lista[5]=='o' & lista[8]=='o'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[0]=='o' & lista[4]=='o' & lista[8]=='o'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+            if(lista[2]=='o' & lista[4]=='o' & lista[6]=='o'){
+              alert("GANASTEEEEEEEEEEEEEEE")
+              location.reload()
+            }
+          }
+        }
+      })
+    })
+    </script>
 </head>
-<body>
-<div align="center">
+
+<body style="background-color: darkslategrey">
+<!--imagen de decoracion-->
+  <div align="center">
   <img src="tic.jpg">
 </div>
-<h2>PRESENTADO POR: Felipe Hidalgo & Esteban Cordoba</h2>
-<div>
-  <table align="center" border="2">
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  </table>        
-</div> 
-<div id="draggable1" class="ui-widget-content draggable">
-  <img src="X.jpg">
-</div>
 
-<div id="draggable2" class="ui-widget-content draggable">
-  <img src="X.jpg">
-</div>
+<audio><source src="pru.ogg" autoplay ></audio> <!--este audio no funciono-->
 
-<div id="draggable3" class="ui-widget-content draggable">
-  <img src="X.jpg">
-</div>
+<h2 align="center">REALIZADO POR: Felipe Hidalgo & Esteban Cordoba</h2>
 
-<div id="draggable4" class="ui-widget-content draggable">
-  <img src="X.jpg">
-</div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    
+    <div class="col-md-auto">
+      <div id="draggable1" class="ui-widget-content draggable">
+        <img src="X.jpg">
+      </div>      
+      <div id="draggable2" class="ui-widget-content draggable">
+        <img src="O.jpg">
+      </div>
+    </div> 
 
-<div id="draggable5" class="ui-widget-content draggable">
-  <img src="X.jpg">
-</div>
-<div id="draggable6" class="ui-widget-content draggable">
-  <img src="O.jpg">
-</div>
-<div id="draggable7" class="ui-widget-content draggable">
-    <img src="O.jpg">
-</div>
-<div id="draggable8" class="ui-widget-content draggable">
-  <img src="O.jpg">
-</div>
-<div id="draggable9" class="ui-widget-content draggable">
-  <img src="O.jpg">
-</div>
-<div id="draggable10" class="ui-widget-content draggable">
-  <img src="O.jpg">
-</div>
+    <div class="col-md-auto">
+      <table border="2">
+          <tr>
+            <td><button class="droppable" value="1" style='width:100px; height:100px'></button></td>
+            <td><button class="droppable" value="2" style='width:100px; height:100px'></button></td>
+            <td><button class="droppable" value="3" style='width:100px; height:100px'></button></td>
+          </tr>
+          <tr>
+            <td><button class="droppable" value="4" style='width:100px; height:100px'></button></td>
+            <td><button class="droppable" value="5" style='width:100px; height:100px'></button></td>
+            <td><button class="droppable" value="6" style='width:100px; height:100px'></button></td>
+          </tr>
+          <tr>
+            <td><button class="droppable" value="7" style='width:100px; height:100px'></button></td>
+            <td><button class="droppable" value="8" style='width:100px; height:100px'></button></td>
+            <td><button class="droppable" value="9" style='width:100px; height:100px'></button></td>
+          </tr>
+        </table>
+    </div>
+
+  </div> 
+</div>  
+<!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
